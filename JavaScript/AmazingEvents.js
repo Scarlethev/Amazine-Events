@@ -15,6 +15,7 @@ const datos=
       "assistance":42756,
       "price": 5
     },
+    
     {
       "id": 2,
       "image":"Salida al museo5.jpg",

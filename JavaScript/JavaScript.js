@@ -11,6 +11,8 @@ var eventosPasados = []; // array vacios
 
 var eventosFuturos = []; // array vacios
 
+var arrayFiltrado=[] // array vacio
+
 for (var i = 0; i < eventos.length; i++) { //condicionales para ingresar en los arrays de acuerdo a la fecha
 
     if (eventos[i].date > fechaBase) {
@@ -35,18 +37,21 @@ function imprimir(id) { //funcion que de acuerdo a los id de los botones indica 
     switch (id) {
 
         case "upcoming":
+            arrayFiltrado=(eventosFuturos)
             display(eventosFuturos)
             document.getElementById("navarDinamico").innerHTML = "Upcoming Events";
 
             break;
 
         case "past":
+            arrayFiltrado=(eventosPasados)
             display(eventosPasados)
             document.getElementById("navarDinamico").innerHTML = "Past Events"
 
             break;
 
         default:
+            arrayFiltrado=(eventos)
             display(eventos)
             document.getElementById("navarDinamico").innerHTML = "Home"
     }
@@ -61,7 +66,7 @@ function display(array) { // funcion que indica que va de acuerdo al array que s
         html += ` 
     <div class="card" style="border-width:0px">
     <img src="/Recursos AE/Images/${array[i].image}" class="card-img-top" alt=${array[i].name}>
-    <div class="card-body">
+    <div class="card-body" id="changeLetter">
       <h5 class="card-title">${array[i].name}</h5>
       <p class="card-text">${array[i].description}</p>
       <div class="textInferior">
@@ -74,7 +79,7 @@ function display(array) { // funcion que indica que va de acuerdo al array que s
         //En detalle se esta enviando un parametro a la url ./detalle.html?id=${array[i].id}
 
         //console.log(html);
-        
+
     }
 
     document.getElementById("todosLosEventos").innerHTML = html;
@@ -92,23 +97,23 @@ imprimir("home")
 
 console.log(location.search);
 
-var page=location.search.split("?page=");
+var page = location.search.split("?page=");
 
 console.log(page[1]);
 
-switch(page[1]){
+switch (page[1]) {
 
     case "upcoming": imprimir("upcoming")
-    document.getElementById("navarDinamico").innerHTML = "Upcoming Events"
-    break;
+        document.getElementById("navarDinamico").innerHTML = "Upcoming Events"
+        break;
 
 
     case "past": imprimir("past")
-    document.getElementById("navarDinamico").innerHTML = "Past Events"
-    break;
+        document.getElementById("navarDinamico").innerHTML = "Past Events"
+        break;
 
-    default: imprimir ("home")
-    document.getElementById("navarDinamico").innerHTML = "Home"
+    default: imprimir("home")
+        document.getElementById("navarDinamico").innerHTML = "Home"
 }
 
 
@@ -119,24 +124,79 @@ var botonIzquierdo = document.getElementById("before");
 
 //funcion que dinamiza al botton de next y past
 
-var contador=0;
+botonIzquierdo.addEventListener("click", function (e) { // recorre y agrega el evento click
+    botones() // Llamada de la funcion ;
+})
 
-botonDerecho.addEventListener("click", function(e){
-    contador=contador +1;
-    console.log(contador)
-        imprimir(e.target.id)
-   
+    botonDerecho.addEventListener("click", function (e) { // recorre y agrega el evento click
+        botones()  // Llamada de la funcion 
+    })
+
+function botones (){ 
+
+    if(page[1]=="upcoming"){
+        botonDerecho.href="/Paginas/home.html?page=past"; //Past
+        botonIzquierdo.href="./home.html" //home
+       
+    }
+
+    else if(page[1]== "past"){
+        botonDerecho.href="./contactUs.html"; //Contacto
+        botonIzquierdo.href="/Paginas/home.html?page=upcoming" //Upcoming
+    }
+
+    else{
+        botonIzquierdo.href="./stats.html"
+        botonDerecho.href="/Paginas/home.html?page=upcoming"
+    }
+    }
+
+
+// BOTON DARKMODE
+
+var body = document.getElementById("body");
+
+const botonDark = document.getElementById("modoOscuro");
+
+botonDark.addEventListener("click", function(){
+   body.classList.toggle("darkMode")
+   if(botonDark.innerText=="DarkMode"){
+    botonDark.innerHTML="LightMode"
+   }
+   else{
+    botonDark.innerHTML="DarkMode"
+   }
 
 })
 
+//FILTRADO EN EL BOTON DE SEARCH
 
-botonIzquierdo.addEventListener("click", function(e){
-    contador=contador -1;
-    console.log(contador)
-        imprimir(e.target.id)
+var input= document.getElementById("input");
+
+
+
+/*input.addEventListener("keyup", function(evento){
+    mostrar(evento)
    
+}) */
 
-})
+// fUNCION DE ARRIBA REPLICADA EN FUNCION FLECHA 
+
+
+input.addEventListener("keyup",(evento)=>{captureDelInput(evento)})
+
+function captureDelInput(evento){
+    var filtroSearch = evento.target.value;
+    var filtroLimpiado= filtroSearch.trim().toLowerCase();
+    var filtrado= arrayFiltrado.filter(evento=> evento.name.toLowerCase().includes(filtroLimpiado));
+    display(filtrado)
+}
+
+
+
+
+
+
 
 
 

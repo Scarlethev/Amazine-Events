@@ -20,13 +20,40 @@ header{
     min-height: 70px;
 }
 
+body {
+    background-color: white;
+    color: black;
+  }
+
+.darkMode{
+    background-color: #000;
+    color:#fff;
+}
+
+.botonDark{
+    width: auto;
+    height: auto;
+    border-radius: 20px;
+    color:#000;
+
+}
+
+.card{
+    background-color: #fff;
+    color:black;
+}
+
 .background {
     max-height: 100%;
     max-width: 100%;
     background-image: url(./Recursos\ AE/Images/sala-fiestas.jpg);
     width:1345px;
     height: 200px;
-    opacity: 0.7;
+    opacity: 0.8;
+}
+
+.flechas{
+    font-size: 30px;
 }
 
 
@@ -224,12 +251,15 @@ border-radius: 7px;
     position: relative;
     display: flex;
     flex-direction: column;
-    width:500px;
+    align-items: center;
+    width:80%;
+    min-width: 320px;
     margin:auto;
     border-radius: 10px;
-    box-shadow: rgba(233, 7, 207, 0.33) 0px 5px 10px 10px;  
     padding: 10px;
     margin-top:15px;
+    text-align: center;
+
 
 }
 
@@ -276,4 +306,17 @@ color:#fff
 
 .separacion i{
     padding-right: 10px;
+}
+
+.tabla{
+    margin-top: 40px;
+    margin: 30px 30px;
+}
+
+.table{
+    padding: 30px 30px;
+}
+
+.border{
+    border: none;
 }

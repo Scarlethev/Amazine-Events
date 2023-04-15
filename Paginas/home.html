@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body id="body">
 
   <header class="sticky-top">
 
@@ -29,13 +29,15 @@
           <span class="navbar-toggler-icon"></span>
         </button>  
 
+
       <div class="collapse navbar-collapse justify-content-end" id="opciones">
         <ul class="navbar-nav">
-          <li class="li"><a class="navlink" href="#" id="home">Home</a></li>
-          <li class="li"><a class="navlink" href="#" id="upcoming">Upcoming Events</a></li>
-          <li class="li"><a class="navlink" href="#" id="past">Past Events</a></li>
+          <li class="li"><a class="navlink" href="/Paginas/home.html" id="home">Home</a></li>
+          <li class="li"><a class="navlink" href="./home.html?page=upcoming" id="upcoming">Upcoming Events</a></li>
+          <li class="li"><a class="navlink" href="./home.html?page=past" id="past">Past Events</a></li>
           <li class="li"><a href="./contactUs.html" id="contact">Contact</a></li>
           <li class="li"><a href="./stats.html" id="stats">Stats</a></li>
+          <button id="modoOscuro" class="botonDark"> DarkMode </button>
         </ul>
       </div>
    
@@ -43,18 +45,18 @@
 
   </header>
 
-  <div class="background" >
+  <div class="background container-fluid">
 
   <div class=" transicion myCarousel">
-
-    <i class="bi bi-chevron-double-left botonDePastyNext " id="before"></i>
+ 
+    <a id="before"><i class="bi bi-chevron-double-left bi flechas"></i></a>
 
     <h1 id=navarDinamico>
     Home
       
     </h1>
 
-    <i class="bi bi-chevron-double-right botonDePastyNext" id="after"></i>
+    <a id="after"><i class="bi bi-chevron-double-right flechas"></i></a>
 
   </div>
 
@@ -93,7 +95,7 @@
       <div class="navbar navbarSeparacion">
         <div class="container justify-content-end align-items-start">
           <form class="d-flex" role="search">
-            <input class="form-control-sm me-2" type="search" onkeyup="mostrar(this.value)" aria-label="Search" id="input">
+            <input class="form-control-sm me-2" type="search" aria-label="Search" id="input">
             <button id="buttonSearch" class="btn btn-outline-danger" style="padding-top: 0; padding-bottom: 0;" type="submit">Search</button>
           </form>
         </div>

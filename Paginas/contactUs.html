@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body id="body">
 
   <header class="sticky-top">
 
@@ -37,6 +37,7 @@
             <li class="li"><a class="navlink" href="./home.html?page=past" id="past">Past Events</a></li>
             <li class="li"><a href="#" id="contact">Contact</a></li>
             <li class="li"><a href="./stats.html" id="stats">Stats</a></li>
+            <button id="modoOscuro" class="botonDark"> DarkMode </button>
           </ul>
         </div>
 
@@ -49,53 +50,73 @@
 
   <div class=" transicion">
 
-    <a href="./home.html?page=past"><i class="bi bi-chevron-double-left"></i></a>
+    <a href="./home.html?page=past"><i class="bi bi-chevron-double-left flechas"></i></a>
 
     <h1 id=navarDinamico>
       Contact Us
     </h1>
 
-    <a href="stats.html"><i class="bi bi-chevron-double-right"></i></a>
+    <a href="./stats.html"><i class="bi bi-chevron-double-right flechas"></i></a>
 
   </div>
 </div>
 
   <main>
+    <div class="form-check-inline formulario">
 
-    <div class="contactanos">
-
-      <form class="formulario" action="">
-
-        <label for="nombre"><i class="bi bi-person iconos"></i></label>
-        <input type="text" name="nombre" id="nombre">
-        <label for="email"><i class="bi bi-envelope iconos"></i></label>
-        <input type="email" name="email" id="email">
-        <label for="number"><i class="bi bi-telephone iconos"></i></label>
-        <input type="number" name="number" id="number">
-        <br>
-        <textarea style="background-color:#a19a9a49; border-radius: 10px;" cols="40" rows="8"
-          placeholder="Escribe aquí tu comentario"></textarea> <br>
-        <button style="width:100px; margin:auto; border-radius:7px" type="submit">ENVIAR</button>
-
-      </form>
-
-      <div class="datosDeContactos">
-
-        <div class="telefonos">
-          <i class="bi bi-whatsapp iconos"></i>
-          <p>11-XXXX-XXXX</p>
-        </div>
-
-        <div class="email">
-          <i class="bi bi-envelope iconos"></i>
-          <p>eventos@gmail.com</p>
-        </div>
-
+    <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="well well-sm">
+                  <form class="form-horizontal" method="post">
+                      <fieldset>                      
+                          <div class="form-group">
+                              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                              <div class="col-md-8">
+                                  <input id="fname" name="name" type="text" placeholder="Nombre" class="form-control">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                              <div class="col-md-8">
+                                  <input id="lname" name="name" type="text" placeholder="Apellido" class="form-control">
+                              </div>
+                          </div>
+  
+                          <div class="form-group">
+                              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+                              <div class="col-md-8">
+                                  <input id="email" name="email" type="text" placeholder="Dirección de Email" class="form-control">
+                              </div>
+                          </div>
+  
+                          <div class="form-group">
+                              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
+                              <div class="col-md-8">
+                                  <input id="phone" name="phone" type="text" placeholder="Teléfono" class="form-control">
+                              </div>
+                          </div>
+  
+                          <div class="form-group">
+                              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
+                              <div class="col-md-8">
+                                  <textarea class="form-control" id="message" name="message" placeholder="Ingrese su mensaje aqui. Nosotros nos contactaremos con usted en 2 días habiles." rows="7"></textarea>
+                              </div>
+                          </div>
+  
+                          <div class="form-group">
+                              <div class="col-md-12 text-center">
+                                  <button type="submit" class="btn btn-group-toggle btn-light">Enviar</button>
+                              </div>
+                          </div>
+                      </fieldset>
+                  </form>
+              </div>
+          </div>
       </div>
+  </div>
 
-    </div>
-
-
+  </div>
 
   </main>
 
