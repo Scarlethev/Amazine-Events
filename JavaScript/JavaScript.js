@@ -1,17 +1,12 @@
 
 const fechaBase = datos.fechaActual;
-
-console.log(fechaBase);
-
 const eventos = datos.eventos;
-
-console.log(eventos);
-
 var eventosPasados = []; // array vacios
-
 var eventosFuturos = []; // array vacios
-
 var arrayFiltrado=[] // array vacio
+var arrayAFiltrar=[] //
+var filtroLimpiado=[];
+var arrayCheckbox=[];
 
 for (var i = 0; i < eventos.length; i++) { //condicionales para ingresar en los arrays de acuerdo a la fecha
 
@@ -40,20 +35,25 @@ function imprimir(id) { //funcion que de acuerdo a los id de los botones indica 
             arrayFiltrado=(eventosFuturos)
             display(eventosFuturos)
             document.getElementById("navarDinamico").innerHTML = "Upcoming Events";
-
+            arrayAFiltrar=eventosFuturos
+            checkboxListener(eventosFuturos)
+           
             break;
 
         case "past":
             arrayFiltrado=(eventosPasados)
             display(eventosPasados)
             document.getElementById("navarDinamico").innerHTML = "Past Events"
-
+            arrayAFiltrar=eventosPasados
+            checkboxListener(eventosPasados)
             break;
 
         default:
             arrayFiltrado=(eventos)
             display(eventos)
             document.getElementById("navarDinamico").innerHTML = "Home"
+            arrayAFiltrar=eventos;
+            checkboxListener(eventos)
     }
 }
 
@@ -160,20 +160,20 @@ const botonDark = document.getElementById("modoOscuro");
 
 botonDark.addEventListener("click", function(){
    body.classList.toggle("darkMode")
+   input.classList.toggle("darkMode")
    if(botonDark.innerText=="DarkMode"){
     botonDark.innerHTML="LightMode"
    }
    else{
     botonDark.innerHTML="DarkMode"
    }
+   })
 
-})
+   
 
 //FILTRADO EN EL BOTON DE SEARCH
 
 var input= document.getElementById("input");
-
-
 
 /*input.addEventListener("keyup", function(evento){
     mostrar(evento)
@@ -182,15 +182,83 @@ var input= document.getElementById("input");
 
 // fUNCION DE ARRIBA REPLICADA EN FUNCION FLECHA 
 
-
-input.addEventListener("keyup",(evento)=>{captureDelInput(evento)})
-
-function captureDelInput(evento){
+input.addEventListener("keyup",(evento)=>{(evento)
     var filtroSearch = evento.target.value;
-    var filtroLimpiado= filtroSearch.trim().toLowerCase();
-    var filtrado= arrayFiltrado.filter(evento=> evento.name.toLowerCase().includes(filtroLimpiado));
-    display(filtrado)
+    filtroLimpiado = filtroSearch.trim().toLowerCase();
+
+    filtrosCombinados()
+
+})
+
+
+// FUNCION DE FILTRADO CHECKBOX
+
+function checkboxListener(){
+
+var checkbox=document.querySelectorAll('input[type=checkbox]'); 
+
+
+for(var i=0; i<checkbox.length; i++){
+    checkbox[i].addEventListener("click", function(){
+
+        arrayCheckbox=[];
+
+    for(var i=0; i<checkbox.length; i++){
+        if (checkbox[i].checked){
+            arrayCheckbox.push(checkbox[i].value)
+        }
+       
+    }
+     //console.log(arrayCheckbox);
+    filtrosCombinados()
+    
+})
+
 }
+
+}
+
+
+function filtrosCombinados(){
+    
+    var eventosPorCategoria = [];
+
+    if(filtroLimpiado !== "" && arrayCheckbox.length > 0) {
+    arrayCheckbox.map(category => {eventosPorCategoria.push(...arrayAFiltrar.filter(evento => 
+    evento.name.toLowerCase().includes(filtroLimpiado) && evento.category === category))
+})
+        
+    }
+
+    else if(filtroLimpiado !== "" && arrayCheckbox.length == 0){
+        eventosPorCategoria= arrayAFiltrar.filter(evento => evento.name.toLowerCase().includes(filtroLimpiado))
+    }
+
+    else if (filtroLimpiado === "" && arrayCheckbox.length > 0) {
+
+        arrayCheckbox.map(category =>
+            eventosPorCategoria.push(...arrayAFiltrar.filter(evento => evento.category === category))
+        )
+
+    }
+
+    else {
+        eventosPorCategoria = arrayAFiltrar
+       
+    }
+
+    eventosPorCategoria.length > 0 ? 
+    display(eventosPorCategoria) : 
+    document.getElementById("todosLosEventos").innerHTML = `<h1 class="ceroResult" >No se encontraron eventos para tu busqueda </h1>`
+
+    }
+
+
+
+// En caso de que no tengas los checkbox armados en el HTML 
+
+// La funcion va a recibir el array del Amazine events llamado eventos 
+
 
 
 
