@@ -12,6 +12,9 @@ header{
     padding-top: 0px;
 }
 
+input{
+    color: rgb(223, 14, 49)
+}
 
 .navegacion{
     background-color:pink;
@@ -50,10 +53,11 @@ body {
     width:1345px;
     height: 200px;
     opacity: 0.8;
+    background-position: center;
 }
 
 .flechas{
-    font-size: 30px;
+    font-size: 45px;
 }
 
 
@@ -81,14 +85,16 @@ ul{
 .transicion{
     display: flex;
     justify-content: space-evenly;
-    color: #43434394;
+    color:#fff;
+    font-weight: bolder;
     padding-top: 50px;
+
 }
 
 .transicion h1{
-    font-weight:600;
+    font-weight:800;
+    color: #fff;
     font-size: 3em;
-    color: #434343ad;
 }
 
 .cards{
@@ -100,6 +106,11 @@ ul{
     margin-top: 20px;
     flex-wrap: wrap;
     
+}
+
+.loanding{
+    color:rgb(238, 132, 150);
+    font-size: 2em;
 }
 
 .card{
@@ -174,7 +185,7 @@ label{
 .acnur{
     display:flex;
     flex-direction: column;
-   align-items: flex-end;
+    align-items: flex-end;
     width:80%;
     padding: 20px;
 }
@@ -182,22 +193,15 @@ label{
 #detalles{
     height: auto;
 }
-
-.backgroundDetalles{
-    background-image: url(/Recursos\ AE/.backgroundDetalles);
-
-}
-   
+  
 
 .container-detalles{
     display: flex;
     flex-direction: row;
-    align-items: center;
     margin: auto;
-    width: 70%;
+    width: 80%;
     min-height: 300px;
     column-gap: 20px;
-    max-height: 1000px;
     height: 300px;
     border-radius: 7px;
     margin-top: 50px;
@@ -205,20 +209,25 @@ label{
     padding: 10px;
     z-index: 1000;
     min-width:320px;
+    flex-wrap: wrap;
     
   }
 
   .container-texto{
     position: relative;
     min-height: 100%;
+    min-width:300px;
+    width:45%;
   }
 
 .container-detalles img{
-max-width:500px;
+position: relative;
+max-width:700px;
 max-height:500px;
-min-width: 100px;
+min-width: 300px;
 height: 300px;
 border-radius: 7px;
+width:45%;
 
 }
 
@@ -247,12 +256,16 @@ border-radius: 7px;
     margin-left: 20px;
 }
 
+.backgroundFormulario{
+ background-color:#65626208;
+}
+
 .formulario{
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width:80%;
+    align-items:flex-end;
+    width:100%;
     min-width: 320px;
     margin:auto;
     border-radius: 10px;
@@ -263,9 +276,15 @@ border-radius: 7px;
 
 }
 
+.form-group{
+    display:flex;
+    margin-top: 20px;
+    justify-content: center;
+
+}
+
 input{
     background-color: #a19a9a49;
-    border:none;
     border-radius: 7px;
 }
 
@@ -319,4 +338,29 @@ color:#fff
 
 .border{
     border: none;
+}
+
+#stats{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+}
+
+.separacion{
+    width:30%;
+}
+
+td{
+    width:30%;
+}
+
+h3{
+    width:100%;
+    height: 20px;
+    text-align: center;
+    background-color: rgba(255, 192, 203, 0.547);
 }

@@ -1,6 +1,27 @@
-const eventos = datos.eventos;
+let eventos;
+
+async function getData(){
+
+  let datosApi;
+  await fetch ("https://amd-amazingevents-api.onrender.com/api/eventos")
+  .then (response => response.json())
+  .then (json => datosApi=json)
+
+eventos= datosApi.eventos
+fechaBase= datosApi.fechaActual;
+
+detalles()
+
+
+}
+
+getData()
+
+console.log(eventos)
 
 console.log(location.search);
+
+function detalles(){
 
 var id=location.search.split("?id=").filter(Number)
 
@@ -9,7 +30,6 @@ console.log(id);
 var selectId= id[0]
 
 const eventoDetalles= [];
-
 
 for (var i = 0; i < eventos.length; i++) {
 
@@ -29,8 +49,8 @@ var asisOesti= eventoDetalles[0].assistance? "Asistencia" : "Estimación"
        texto.innerHTML=
        
        `<div class="container-detalles backgroundDetalles" id="detalles" background>
-       <img src="/Recursos AE/Images/${eventoDetalles[0].image}">
-       <div class="container-texto  background-detalles">
+       <img src="${eventoDetalles[0].image}">
+       <div class="container-texto">
          <h5 class="card-title">${eventoDetalles[0].name}</h5>
          <p class="card-text">
            <br>
@@ -58,4 +78,6 @@ var asisOesti= eventoDetalles[0].assistance? "Asistencia" : "Estimación"
          referrerpolicy="no-referrer-when-downgrade"></iframe>
  
      </div>`
+}
+
 
